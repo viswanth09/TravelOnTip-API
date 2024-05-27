@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd 
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<sub-flow name="TravelOnTip-GetSchedules-ImplementationFlow" doc:id="a14c995b-3e64-45af-9c50-a3ec11b9d2d1" >
+		<db:select doc:name="Select" doc:id="ea6ced77-333a-4380-ae3f-1a81f5e2157d" config-ref="Database_Config">
+			<db:sql ><![CDATA[select * from schedules where companyname = 'TravelOnTip']]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="ab94f0b7-d89d-472d-aba2-4541b7b61b1e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="b1f93cef-be35-48f0-80fc-086016def7ea" message="travelOnTip schedules log for TransactionId: #[vars.transactionId]"/>
+	</sub-flow>
+</mule>

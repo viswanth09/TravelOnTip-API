@@ -2,4 +2,11 @@ http:
   listener:
     host: "localhost"
     port: "8081"
-    path: "/getRoutes"
+    path: "/TravelOnTip/{serviceType}"
+    
+db:
+  host: "localhost"
+  port: "1521"
+  user: "scott"
+  password: "lang"
+  instance: "orcl"
