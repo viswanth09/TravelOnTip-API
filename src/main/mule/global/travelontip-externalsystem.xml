@@ -20,7 +20,7 @@ attributes.uriParams.serviceType]]></ee:set-variable>
 				<ee:set-variable variableName="transactionId" ><![CDATA[%dw 2.0
 output application/json
 ---
-attributes.headers.transcationid]]></ee:set-variable>
+attributes.headers.transactionId]]></ee:set-variable>
 			</ee:variables>
 		</ee:transform>
 		<choice doc:name="Choice" doc:id="a0d56ed3-06dc-4b9d-a235-8eeb3bb598fa" >

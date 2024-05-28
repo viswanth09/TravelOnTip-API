@@ -7,7 +7,7 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<sub-flow name="TravelOnTip-GetRoutes-ImplementationFlow" doc:id="70cf4e15-bd8e-492b-ae1a-d27b25b884bd" >
 		<db:select doc:name="Select" doc:id="58a4ea43-9ac5-4e79-8f94-bc5b47681ac2" config-ref="Database_Config">
-			<db:sql ><![CDATA[select * from routes where companyname = 'TravelOnTip']]></db:sql>
+			<db:sql ><![CDATA[select * from travelontiproutes where companyname = 'TravelOnTip']]></db:sql>
 		</db:select>
 		<ee:transform doc:name="Transform Message" doc:id="d8e8c50c-f107-4389-befb-6fd95f3f5afb" >
 			<ee:message >
