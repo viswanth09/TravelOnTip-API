@@ -192,6 +192,13 @@ type auto_a14c995b_3e64_45af_9c50_a3ec11b9d2d1_Output_Variables_transactionId = 
 
 ]]></types:shape>
     </types:type>
+    <types:type name="RoutesExample" format="json">
+      <types:shape format="weave" example="examples/RoutesExample.txt"><![CDATA[%dw 2.0
+
+type RoutesExample = Array<{|  originLocation: {| locationCode: String |},   destinationLocation: {| locationCode: String |}|}> {"example": "[{\\\"originLocation\\\":{\\\"locationCode\\\":\\\"BEN-SG\\\"},\\\"destinationLocation\\\":{\\\"locationCode\\\":\\\"KLG-MY\\\"}}]"}
+
+]]></types:shape>
+    </types:type>
   </types:catalog>
   <types:enrichment select="#70cf4e15-bd8e-492b-ae1a-d27b25b884bd">
     <types:processor-declaration>
@@ -245,6 +252,15 @@ type auto_a14c995b_3e64_45af_9c50_a3ec11b9d2d1_Output_Variables_transactionId = 
           <types:variable name="serviceType" type="auto_a14c995b-3e64-45af-9c50-a3ec11b9d2d1_Output-Variables-serviceType"/>
           <types:variable name="transactionId" type="auto_a14c995b-3e64-45af-9c50-a3ec11b9d2d1_Output-Variables-transactionId"/>
         </types:variables>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#d8e8c50c-f107-4389-befb-6fd95f3f5afb">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="RoutesExample"/>
+        </types:message>
       </types:output-event>
     </types:processor-declaration>
   </types:enrichment>
